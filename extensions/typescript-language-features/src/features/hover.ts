@@ -46,6 +46,8 @@ class TypeScriptHoverProvider implements vscode.HoverProvider {
 			parts.push({ language: 'typescript', value: data.displayString });
 		}
 		parts.push(markdownDocumentation(data.documentation, data.tags));
+		parts.push(JSON.stringify(data.documentation.replace(/ /g, '&nbsp;').replace(/```/g, '`` ``` ``')));
+
 		return parts;
 	}
 }
